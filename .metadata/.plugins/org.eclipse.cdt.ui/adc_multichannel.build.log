@@ -1,0 +1,17 @@
+01:22:57 **** Incremental Build of configuration Debug for project adc_multichannel ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc -o "adc_multichannel.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\hasan\STM32CubeIDE\workspace_1.14.0\adc_multichannel\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="adc_multichannel.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: adc_multichannel.elf
+ 
+arm-none-eabi-size  adc_multichannel.elf 
+arm-none-eabi-objdump -h -S adc_multichannel.elf  > "adc_multichannel.list"
+   text	   data	    bss	    dec	    hex	filename
+   8284	     20	   1700	  10004	   2714	adc_multichannel.elf
+Finished building: default.size.stdout
+ 
+Finished building: adc_multichannel.list
+ 
+
+01:22:58 Build Finished. 0 errors, 0 warnings. (took 659ms)
+

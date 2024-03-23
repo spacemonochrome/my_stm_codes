@@ -1,0 +1,10 @@
+16:50:50 **** Incremental Build of configuration Debug for project hall_adc ****
+make -j16 all 
+arm-none-eabi-size  hall_adc.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7896	     20	   1620	   9536	   2540	hall_adc.elf
+Finished building: default.size.stdout
+ 
+
+16:50:50 Build Finished. 0 errors, 0 warnings. (took 195ms)
+

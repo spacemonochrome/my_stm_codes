@@ -43,7 +43,6 @@
 /* Private variables ---------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
-osThreadId myTask03Handle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -53,7 +52,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
-void StartTask03(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -116,16 +114,12 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityRealtime, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of myTask02 */
-  osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
+  osThreadDef(myTask02, StartTask02, osPriorityRealtime, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
-
-  /* definition and creation of myTask03 */
-  osThreadDef(myTask03, StartTask03, osPriorityNormal, 0, 128);
-  myTask03Handle = osThreadCreate(osThread(myTask03), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -218,7 +212,9 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-
+	  b++;
+	  HAL_Delay(500);
+    //osDelay(500);
   }
   /* USER CODE END 5 */
 }
@@ -237,31 +233,31 @@ void StartTask02(void const * argument)
   for(;;)
   {
 	  a++;
-	  	osDelay(1000);
-    osDelay(1);
+	  HAL_Delay(1000);
+    //osDelay(1000);
   }
   /* USER CODE END StartTask02 */
 }
 
-/* USER CODE BEGIN Header_StartTask03 */
 /**
-* @brief Function implementing the myTask03 thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTask03 */
-void StartTask03(void const * argument)
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  /* USER CODE BEGIN StartTask03 */
-  /* Infinite loop */
-  for(;;)
-  {
-	  b++;
-	  	  	osDelay(500);
-	      osDelay(1);
-    osDelay(1);
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
   }
-  /* USER CODE END StartTask03 */
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
 }
 
 /**

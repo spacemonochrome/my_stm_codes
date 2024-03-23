@@ -101,11 +101,13 @@ int main(void)
   {
 	  HAL_ADC_PollForConversion(&hadc1,1000);
 	  	readValue = HAL_ADC_GetValue(&hadc1);
-	  	if(readValue > 30)
+	  	if(readValue > 300)
 	  	{
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-			//HAL_Delay(20);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
 	  	}
+	  	else {
+	  		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+		}
 	  	HAL_Delay(1);
     /* USER CODE END WHILE */
 

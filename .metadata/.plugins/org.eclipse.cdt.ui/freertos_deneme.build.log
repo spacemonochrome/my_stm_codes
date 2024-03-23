@@ -1,0 +1,10 @@
+14:39:20 **** Incremental Build of configuration Debug for project freertos_deneme ****
+make -j16 all 
+arm-none-eabi-size  freertos_deneme.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10516	    104	   6048	  16668	   411c	freertos_deneme.elf
+Finished building: default.size.stdout
+ 
+
+14:39:20 Build Finished. 0 errors, 0 warnings. (took 204ms)
+

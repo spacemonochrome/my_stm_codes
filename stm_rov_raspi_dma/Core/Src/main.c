@@ -128,53 +128,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
     memset(motorverisi, 80, 6*sizeof(*motorverisi));
-    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1, 0);
-    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_2, 0);
-    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3, 0);
-    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_4, 0);
-    __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1, 0);
-    __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_2, 0);
+    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1, 6000);
+    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_2, 6000);
+    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3, 6000);
+    __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_4, 6000);
+    __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1, 6000);
+    __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_2, 6000);
 
   while (1)
   {
-	  if (motorverisi[6] == 'D' && motorverisi[7] == '_')
-	  {
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1, (4000 + ((motorverisi[0]-40)*50)));
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_2, (4000 + ((motorverisi[1]-40)*50)));
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3, (4000 + ((motorverisi[2]-40)*50)));
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_4, (4000 + ((motorverisi[3]-40)*50)));
-		  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1, (4000 + ((motorverisi[4]-40)*50)));
-		  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_2, (4000 + ((motorverisi[5]-40)*50)));
-	  }
-	  else if(receivedData[6] != 0 && receivedData[7] != 0)
-	  {
-		  while(motorverisi[0] != 80 || motorverisi[1] != 80 || motorverisi[2] != 80 || motorverisi[3] != 80 || motorverisi[4] != 80 || motorverisi[5] != 80)
-		  {
-			  while( x < 6)
-			  {
-				  if(motorverisi[x] == 80)
-				  {
 
-				  }
-				  else if(motorverisi[x] > 80 && motorverisi[x] < 121)
-				  {
-				  motorverisi[x]--;
-				  }
-				  else if(motorverisi[x] < 80 && motorverisi[x] > 39)
-				  {
-					  motorverisi[x]++;
-				  }
-			  x++;
-			  }
-		  }
-
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1, 0);
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_2, 0);
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3, 0);
-		  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_4, 0);
-		  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1, 0);
-		  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_2, 0);
-	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

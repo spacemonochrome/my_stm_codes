@@ -1,0 +1,10 @@
+16:05:50 **** Build of configuration Debug for project pot_motor ****
+make -j16 all 
+arm-none-eabi-size  pot_motor.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11148	     20	   1692	  12860	   323c	pot_motor.elf
+Finished building: default.size.stdout
+ 
+
+16:05:51 Build Finished. 0 errors, 0 warnings. (took 331ms)
+

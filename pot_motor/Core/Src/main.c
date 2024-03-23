@@ -104,7 +104,10 @@ int main(void)
   {
 	  HAL_ADC_PollForConversion(&hadc1,1000);
 	  	readValue = HAL_ADC_GetValue(&hadc1);
-	  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_4, 8000 + (readValue*2));
+	  	if (readValue > 4000) {
+	  		readValue = 3999;
+		}
+	  	__HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_4, 8000 + (readValue*2));
 	  HAL_Delay(10);
     /* USER CODE END WHILE */
 
